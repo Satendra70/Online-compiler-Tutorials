@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="SHORTCUT ICON" href="img/blackstro.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <title>CodeHope - Login</title>
+</head>
+<style>
+    .formerror {
+        margin-left: 5px;
+        color: red;
+        font-weight: bolder;
+        width: 80%;
+        overflow: hidden;
+    }
+</style>
+
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+
+            <!-- Icon -->
+            <div class="fadeIn first">
+                <a href="index.html">
+                    <img src="img/CodeHope1.png" id="icon" alt="User Icon" /></a>
+            </div>
+
+            <div class="container w-50">
+                <a href="" class="btn btn-block btn-outline-info"> <i class="fab fa-twitter"></i> Twitter</a>
+                <a href="" class="btn btn-block btn-outline-primary"> <i class="fab fa-facebook-f"></i> facebook</a>
+            </div>
+            <!-- Login Form -->
+            <form name="myForm" action="" onsubmit="return validationForm()" method="POST">
+
+                <div id="username">
+                    <input type="text" name="username" id="username" class="fadeIn second" name="login"
+                        placeholder="Username" ondblclick="validationForm()">
+                    <span class="formerror"> </span>
+                </div>
+                <div id="password">
+                    <input type="password" name="password" id="password" class="fadeIn third" name="login"
+                        placeholder="password" ondblclick="validationForm()">
+                    <span class="formerror"></span>
+
+                </div>
+                <!-- <input type="submit" class="fadeIn fourth" value="Log In"> -->
+                <button type="submit" class="btn btn-success w-50" onclick="resfun()">Login</button>
+            </form>
+
+            <!-- Remind Passowrd -->
+            <div id="formFooter">
+                <p class="fw-bold text-primary">Don't have an account
+                    <a href="Register.html" class=" btn btn-outline-primary btn-sm">Create One</a>
+                </p>
+                <a class="underlineHover" href="#">Forgot Password?</a>
+            </div>
+
+        </div>
+    </div>
+    <script type="text/javascript">
+        function resfun() {
+
+            var username = document.forms['myForm']["username"].value;
+            var pass = document.forms['myForm']["password"].value;
+
+            if (username == "admin" && pass == 12345678) {
+                window.location.assign("index.html");
+                alert("You have Logged Succesfully.");
+            } else {
+                window.location.assign("Register.html");
+                alert("invalid");
+                return;
+            }
+        }
+        function clearErrors() {
+            let errors = document.getElementsByClassName('formerror');
+            for (let item of errors) {
+                // document.getElementsByClassName('formerror').style.color = "green";
+                item.innerHTML = '<p style="color:green">Validate</p>';
+            }
+
+
+        }
+        function seterror(id, error) {
+            element = document.getElementById(id);
+            element.getElementsByClassName('formerror')[0].innerHTML = error;
+        }
+
+
+        //VALIDATIONS FUNCTIONS
+        function validationForm() {
+            var x = true;
+            clearErrors();
+
+            //   NAME VALIDATION IN JAVASCRIPT
+            var username = document.forms['myForm']["username"].value;
+            if (username.length < 5) {
+                seterror("username", "*length of name is too short");
+                x = false;
+            }
+            if (username.length == 0) {
+                seterror("username", "length of name can't be zero");
+                x = false;
+            }
+
+            //   PASSWORD VALIDATIONS IN JAVASCRIPT 
+            var pass = document.forms['myForm']["password"].value;
+            if (pass.length <= 6) {
+                seterror("password", "*length of password should be atleast 6 characters long");
+                x = false;
+            }
+
+            return x;
+        }
+    </script>
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+
+</html>
